@@ -9,7 +9,7 @@ public class DictionaryApiService : IDictionaryApiService
     public async Task<string> GetAnswerFromDictionary()
     {
         HttpClient client = new (); 
-        var words = "Loven";
+        var words = new string[] {"Loven", "Hagen", "Tiger", "Mobbe", "Circe"};
         return word[0];
         // var options = {
         //     method: 'GET',
