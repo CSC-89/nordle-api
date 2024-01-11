@@ -10,7 +10,7 @@ public class WordleGameControllerTests
     {
         WordleGameController controller = new();
 
-        var result = controller.GetWordleAnswer();
+        var result = await controller.GetWordleAnswer();
 
         result.Should().NotBeNull();
         result.Should().NotBe("");

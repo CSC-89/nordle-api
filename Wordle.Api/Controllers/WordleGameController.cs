@@ -8,9 +8,9 @@ namespace Wordle.Api.Controllers;
 public class WordleGameController : ControllerBase
 {
     [HttpGet(Name = "GetWordleAnswer")]
-    public string GetWordleAnswer()
+    public async Task<string> GetWordleAnswer()
     {
         DictionaryApiService apiService = new();
-        return apiService.GetAnswerFromDictionary();
+        return await apiService.GetAnswerFromDictionary();
     }
 }
