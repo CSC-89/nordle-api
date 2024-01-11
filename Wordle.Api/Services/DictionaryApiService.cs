@@ -27,7 +27,5 @@ public class DictionaryApiService : IDictionaryApiService
         // }).catch((error) => {
         //     console.error(error);
         // });
-        
-        throw new NotImplementedException();
     }
 }
