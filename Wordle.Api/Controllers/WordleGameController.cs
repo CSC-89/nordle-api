@@ -10,7 +10,7 @@ public class WordleGameController : ControllerBase
     [HttpGet(Name = "GetWordleAnswer")]
     public async Task<string> GetWordleAnswer()
     {
-        DictionaryApiService apiService = new();
-        return await apiService.GetAnswerFromDictionary();
+        WordFetcherService apiService = new();
+        return await apiService.GetAnswerFromDictionary("five-letter-words.json");
     }
 }
