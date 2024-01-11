@@ -9,8 +9,8 @@ public class DictionaryApiService : IDictionaryApiService
     public async Task<string> GetAnswerFromDictionary()
     {
         HttpClient client = new (); 
-        var words = new string[] {"Loven", "Hagen", "Tiger", "Mobbe", "Circe"};
-        return words[0];
+        var words = "Loven";
+        return word[0];
         // var options = {
         //     method: 'GET',
         //     url: 'https://random-words5.p.rapidapi.com/getMultipleRandom',
