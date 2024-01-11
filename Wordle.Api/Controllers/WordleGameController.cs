@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Wordle.Api.Services;
 
 namespace Wordle.Api.Controllers;
 
@@ -9,6 +10,7 @@ public class WordleGameController : ControllerBase
     [HttpGet(Name = "GetWordleAnswer")]
     public string GetWordleAnswer()
     {
-        return "LOVEN";
+        DictionaryApiService apiService = new();
+        return apiService.GetAnswerFromDictionary();
     }
 }

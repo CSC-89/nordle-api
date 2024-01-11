@@ -1,6 +1,6 @@
 namespace Wordle.Api.Services;
 
-public interface IDictionaryService
+public interface IDictionaryApiService
 {
     public string GetAnswerFromDictionary();
 }
