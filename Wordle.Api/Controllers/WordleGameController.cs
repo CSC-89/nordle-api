@@ -4,16 +4,16 @@ namespace Wordle.Api.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class WeatherForecastController : ControllerBase
+public class WordleGameController : ControllerBase
 {
     private static readonly string[] Summaries = new[]
     {
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
     };
 
-    private readonly ILogger<WeatherForecastController> _logger;
+    private readonly ILogger<WordleGameController> _logger;
 
-    public WeatherForecastController(ILogger<WeatherForecastController> logger)
+    public WordleGameController(ILogger<WordleGameController> logger)
     {
         _logger = logger;
     }
