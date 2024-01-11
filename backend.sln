@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wordle.Api", "Wordle.Api\Wordle.Api.csproj", "{D00DF839-D801-4DC3-BAC0-3316ED549DEF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wordle.Tests", "Wordle.Tests\Wordle.Tests.csproj", "{E4AF41EE-CE1E-4B4F-9BAC-D171DAD7535D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wordle.Test", "Wordle.Test\Wordle.Test.csproj", "{E4AF41EE-CE1E-4B4F-9BAC-D171DAD7535D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
