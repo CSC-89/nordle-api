@@ -34,7 +34,7 @@ public class WordleGameControllerTests
         result.Should().NotBe("");
     }
     [Fact]
-    public async void WordFetcherService_returns_word_in_list()
+    public async void WordFetcherService_returns_random_word_from_list()
     {
         var result = await _service.GetAnswerFromDictionary("five-letter-words.json");
         

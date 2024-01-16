@@ -5,14 +5,14 @@ namespace Wordle.Api.Services;
 
 public class WordFetcherService : IWordFetcherService
 {
+    private string _path = AppDomain.CurrentDomain.BaseDirectory;
+    
     public async Task<string> GetAnswerFromDictionary(string slug)
     {
-        var path = AppDomain.CurrentDomain.BaseDirectory;
-        var url = Path.Join(path, $"data/{slug}");
-        var wordsFromFile = File.ReadAllText(url);
-        var wordsJSON = JsonSerializer.Deserialize<string[]>(wordsFromFile);
-        Console.WriteLine($"words JSON: {wordsJSON}");
+        var url = Path.Join(_path, $"data/{slug}");
+        var wordsJSON = JsonSerializer.Deserialize<string[]>(File.ReadAllText(url));
+        var randNum = new Random().Next(wordsJSON.Length - 1);
         
-        return wordsJSON[0];
+        return wordsJSON[randNum];
     }
 }
