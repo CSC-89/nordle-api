@@ -1,19 +1,41 @@
 using FluentAssertions;
+using Microsoft.EntityFrameworkCore;
 using Wordle.Api.Controllers;
+using Wordle.Api.Models;
 using Wordle.Api.Services;
-using Xunit.Abstractions;
 
 namespace Wordle.Tests;
 
-public class WordleGameControllerTests
+public abstract class WordleGameControllerTests
 {
-    private readonly ITestOutputHelper _testOutputHelper;
     private readonly WordleGameController _controller = new();
     private readonly WordFetcherService _service = new();
-
-    public WordleGameControllerTests(ITestOutputHelper testOutputHelper)
+    private readonly WordContext _context;
+    protected DbContextOptions<WordContext> ContextOptions { get; }
+    
+    protected WordleGameControllerTests(DbContextOptions<WordContext> contextOptions)
     {
-        _testOutputHelper = testOutputHelper;
+        ContextOptions = contextOptions;
+        _context = new WordContext(ContextOptions);
+        Seed();
+    }
+    
+    private async void Seed()
+    {
+        await _context.Database.EnsureDeletedAsync();
+        await _context.Database.EnsureCreatedAsync();
+
+        var words = new List<WordItem>()
+        {
+            new("Loven"),
+            new ("Hagen"),
+            new("Tiger"),
+            new("Mobbe"),
+            new("Circe")
+        };
+        
+        await _context.Word.AddRangeAsync(words);
+        _context.SaveChanges();
     }
 
     [Fact]

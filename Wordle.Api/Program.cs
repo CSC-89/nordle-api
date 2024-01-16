@@ -9,7 +9,7 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<IWordFetcherService, WordFetcherService>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+var connectionString = builder.Configuration["ConnectionStrings:AzureDb"];
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
