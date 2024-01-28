@@ -7,13 +7,24 @@ namespace Wordle.Api.Services;
 public class WordFetcherService : IWordFetcherService
 {
     private string _path = AppDomain.CurrentDomain.BaseDirectory;
+
+    public string[] GetWords(string slug)
+    {
+        var url = Path.Join(_path, $"data/{slug}");
+        return JsonSerializer.Deserialize<string[]>(File.ReadAllText(url))!;
+    }
     
     public async Task<GetWordResDTO> GetAnswerFromDictionary(string slug)
     {
-        var url = Path.Join(_path, $"data/{slug}");
-        var wordsJSON = JsonSerializer.Deserialize<string[]>(File.ReadAllText(url));
-        var randNum = new Random().Next(wordsJSON.Length - 1);
+        var wordsJson = GetWords(slug);
+        var randNum = new Random().Next(wordsJson.Length - 1);
 
-        return new GetWordResDTO() { Word = wordsJSON[randNum] };
+        return new GetWordResDTO() { Word = wordsJson[randNum] };
+    }
+
+    public async Task<bool> CheckWordExists(string slug, string guess)
+    {
+        var wordsJson = GetWords(slug);
+        return wordsJson.Any(x => x.ToUpper() == guess);
     }
 }
