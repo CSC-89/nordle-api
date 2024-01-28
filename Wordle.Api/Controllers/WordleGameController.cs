@@ -29,11 +29,10 @@ public class WordleGameController : ControllerBase
     }
     
     [HttpGet("writeFile")]
-    public async Task<CheckWordResDTO> writeWordsToFile()
+    public async Task<ActionResult> writeWordsToFile()
     {
-        return new CheckWordResDTO()
-        {
-            Response = true
-        };
+        var writerService = new FileWriterService();
+        var result = await writerService.WriteWordsToFile();
+        return Ok(result);
     }
 }
