@@ -8,25 +8,22 @@ namespace Wordle.Api.Controllers;
 [Route("[controller]")]
 public class WordleGameController : ControllerBase
 {
-    private readonly WordFetcherService _service;
-    public WordleGameController(WordFetcherService service)
-    {
-        _service = service;
-    }
+    private readonly WordFetcherService _service = new ();
+    
     
     [HttpGet("getWord")]
-    public async Task<GetWordResDTO> GetWordleAnswer()
+    public GetWordResDTO GetWordleAnswer()
     {
-        return await _service.GetAnswerFromDictionary("five-letter-words.json");
+        return _service.GetAnswerFromDictionary("five-letter-words.json");
     }
     
     [HttpGet("check")]
-    public async Task<CheckWordResDTO> CheckGuess(string guess)
+    public CheckWordResDTO CheckGuess(string guess)
     {
         
         return new CheckWordResDTO()
         {
-            Response = await _service.CheckWordExists("five-letter-words.json", guess)
+            Response = _service.CheckWordExists("five-letter-words.json", guess)
         };
         
     }

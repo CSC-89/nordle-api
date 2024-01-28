@@ -14,7 +14,7 @@ public class WordFetcherService : IWordFetcherService
         return JsonSerializer.Deserialize<string[]>(File.ReadAllText(url))!;
     }
     
-    public async Task<GetWordResDTO> GetAnswerFromDictionary(string slug)
+    public GetWordResDTO GetAnswerFromDictionary(string slug)
     {
         var wordsJson = GetWords(slug);
         var randNum = new Random().Next(wordsJson.Length - 1);
@@ -22,7 +22,7 @@ public class WordFetcherService : IWordFetcherService
         return new GetWordResDTO() { Word = wordsJson[randNum] };
     }
 
-    public async Task<bool> CheckWordExists(string slug, string guess)
+    public bool CheckWordExists(string slug, string guess)
     {
         var wordsJson = GetWords(slug);
         return wordsJson.Any(x => x.ToUpper() == guess);
