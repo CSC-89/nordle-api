@@ -1,6 +1,8 @@
+using Wordle.Api.DTOs;
+
 namespace Wordle.Api.Services;
 
 public interface IWordFetcherService
 {
-    public Task<string> GetAnswerFromDictionary(string slug);
+    public Task<GetWordResDTO> GetAnswerFromDictionary(string slug);
 }
