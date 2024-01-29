@@ -7,12 +7,6 @@ namespace Wordle.Api.Services;
 public class WordFetcherService : IWordFetcherService
 {
     private string _path = AppDomain.CurrentDomain.BaseDirectory;
-
-    public string[] GetWords(string slug)
-    {
-        var url = Path.Join(_path, $"data/{slug}");
-        return JsonSerializer.Deserialize<string[]>(File.ReadAllText(url))!;
-    }
     
     public async Task<GetWordResDTO> GetAnswerFromDictionary(string slug)
     {
