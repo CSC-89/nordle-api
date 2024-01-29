@@ -14,17 +14,19 @@ public class WordFetcherService : IWordFetcherService
         return JsonSerializer.Deserialize<string[]>(File.ReadAllText(url))!;
     }
     
-    public GetWordResDTO GetAnswerFromDictionary(string slug)
+    public async Task<GetWordResDTO> GetAnswerFromDictionary(string slug)
     {
-        var wordsJson = GetWords(slug);
-        var randNum = new Random().Next(wordsJson.Length - 1);
+        var readerService = new FileReaderService();
+        var words = await readerService.FetchAllWords();
+        var randNum = new Random().Next(words.Length - 1);
 
-        return new GetWordResDTO() { Word = wordsJson[randNum] };
+        return new GetWordResDTO() { Word = words[randNum] };
     }
 
-    public bool CheckWordExists(string slug, string guess)
+    public async Task<bool> CheckWordExists(string slug, string guess)
     {
-        var wordsJson = GetWords(slug);
-        return wordsJson.Any(x => x.ToUpper() == guess);
+        var readerService = new FileReaderService();
+        var words = await readerService.FetchAllWords();
+        return words.Any(x => x.ToUpper() == guess);
     }
 }

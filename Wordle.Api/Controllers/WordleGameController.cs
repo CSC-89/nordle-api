@@ -12,18 +12,18 @@ public class WordleGameController : ControllerBase
     
     
     [HttpGet("getWord")]
-    public GetWordResDTO GetWordleAnswer()
+    public async Task<GetWordResDTO> GetWordleAnswer()
     {
-        return _service.GetAnswerFromDictionary("five-letter-words.json");
+        return await _service.GetAnswerFromDictionary("five-letter-words.json");
     }
     
     [HttpGet("check")]
-    public CheckWordResDTO CheckGuess(string guess)
+    public async Task<CheckWordResDTO> CheckGuess(string guess)
     {
         
         return new CheckWordResDTO()
         {
-            Response = _service.CheckWordExists("five-letter-words.json", guess)
+            Response = await _service.CheckWordExists("five-letter-words.json", guess)
         };
         
     }
@@ -31,8 +31,8 @@ public class WordleGameController : ControllerBase
     [HttpGet("writeFile")]
     public async Task<ActionResult> writeWordsToFile()
     {
-        var writerService = new FileWriterService();
-        var result = await writerService.WriteWordsToFile();
+        var writerService = new FileReaderService();
+        var result = await writerService.FetchAllWords();
         return Ok(result);
     }
 }
