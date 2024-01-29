@@ -6,7 +6,7 @@ namespace Wordle.Api.Services;
 
 public class FileReaderService : IFileReaderService
 {
-    private string _url = "./data/lemma_bokmal_2012.txt";
+    private string _url = "../repository/Wordle.Api/data/lemma_bokmal_2012.txt";
 
     public async Task<string[]> FetchAllWords()
     {
