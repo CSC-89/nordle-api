@@ -48,7 +48,7 @@ public class WordleGameController : ControllerBase
         }
         catch (Exception e)
         {
-            return BadRequest(e);
+            return BadRequest(e.Message);
         }
     }
 
@@ -63,7 +63,7 @@ public class WordleGameController : ControllerBase
         }
         catch (Exception e)
         {
-            return BadRequest(e);
+            return BadRequest(e.Message);
         }
     }
 }
