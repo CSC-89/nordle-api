@@ -12,9 +12,17 @@ public class WordleGameController : ControllerBase
     
     
     [HttpGet("getWord")]
-    public async Task<GetWordResDTO> GetWordleAnswer()
+    public async Task<ActionResult<GetWordResDTO>> GetWordleAnswer()
     {
-        return await _service.GetAnswerFromDictionary("five-letter-words.json");
+        try
+        {
+            return Ok(await _service.GetAnswerFromDictionary("five-letter-words.json"));
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e);
+        }
+        
     }
     
     [HttpGet("check")]
