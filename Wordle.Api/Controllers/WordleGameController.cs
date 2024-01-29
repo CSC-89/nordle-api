@@ -53,7 +53,7 @@ public class WordleGameController : ControllerBase
     }
 
     [HttpGet("writeFile")]
-    public async Task<ActionResult> writeWordsToFile()
+    public async Task<ActionResult> FetchAllWords()
     {
         try
         {
