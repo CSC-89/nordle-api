@@ -52,7 +52,7 @@ public abstract class WordleGameControllerTests
     [Fact]
     public async void Getword_returns_a_word()
     {
-        var result = await _controller.GetWordleAnswer();
+        var result = await _controller.GetAnswer();
 
         result.Should().NotBeNull();
         result.Should().NotBe("");

@@ -11,7 +11,7 @@ public class WordleGameController : ControllerBase
     private readonly WordFetcherService _service = new();
 
     [HttpGet("getWord")]
-    public async Task<ActionResult<GetWordResDTO>> GetWordleAnswer()
+    public async Task<ActionResult<GetWordResDTO>> GetAnswer()
     {
         try
         {
