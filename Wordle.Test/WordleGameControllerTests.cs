@@ -35,7 +35,7 @@ public abstract class WordleGameControllerTests
         };
         
         await _context.Word.AddRangeAsync(words);
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
     }
     
     [Fact]
