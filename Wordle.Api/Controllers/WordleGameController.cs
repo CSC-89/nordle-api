@@ -39,7 +39,7 @@ public class WordleGameController : ControllerBase
         }
     }
 
-    [HttpGet("writeFile")]
+    [HttpGet("fetchAllWords")]
     public async Task<ActionResult> FetchAllWords()
     {
         try
